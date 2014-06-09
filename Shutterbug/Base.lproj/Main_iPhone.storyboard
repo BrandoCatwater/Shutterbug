@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13D65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="Ial-e0-gdA">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
+    </dependencies>
+    <scenes>
+        <!--Just Posted Flickr PhotosTVC - Shutterbug-->
+        <scene sceneID="HU7-MM-jUG">
+            <objects>
+                <tableViewController id="mJJ-H6-WGG" customClass="JustPostedFlickrPhotosTVC" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="Ulr-xd-f2q">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Flickr Photo Cell" id="Emy-CA-blz">
+                                <rect key="frame" x="0.0" y="86" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Emy-CA-blz" id="9YG-D6-E2f">
+                                    <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="w7l-bE-Jts" kind="push" identifier="Display Photo" id="3AO-xP-bpX"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="mJJ-H6-WGG" id="Pmq-KT-6JT"/>
+                            <outlet property="delegate" destination="mJJ-H6-WGG" id="UFx-2l-e4t"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Shutterbug" id="nhy-ad-RBO"/>
+                    <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="YHD-VN-67P">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <connections>
+                            <action selector="fetchPhotos" destination="mJJ-H6-WGG" eventType="valueChanged" id="MEV-TB-Sgj"/>
+                        </connections>
+                    </refreshControl>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="oBi-hv-7qv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="694" y="93"/>
+        </scene>
+        <!--Image View Controller-->
+        <scene sceneID="23h-wp-8jf">
+            <objects>
+                <viewController id="w7l-bE-Jts" customClass="ImageViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="aSd-is-hiG"/>
+                        <viewControllerLayoutGuide type="bottom" id="ye9-J0-rIH"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Oh4-fM-Wvj">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NKB-3g-eGB">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            </scrollView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="IP9-5B-XTH">
+                                <rect key="frame" x="142" y="266" width="37" height="37"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="color" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </activityIndicatorView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="NKB-3g-eGB" firstAttribute="leading" secondItem="Oh4-fM-Wvj" secondAttribute="leading" id="O6W-HT-Xrg"/>
+                            <constraint firstAttribute="centerY" secondItem="IP9-5B-XTH" secondAttribute="centerY" id="Pjj-k7-uiW"/>
+                            <constraint firstItem="NKB-3g-eGB" firstAttribute="top" secondItem="Oh4-fM-Wvj" secondAttribute="top" id="UNL-Fz-ObY"/>
+                            <constraint firstAttribute="bottom" secondItem="NKB-3g-eGB" secondAttribute="bottom" id="a4u-NS-Djo"/>
+                            <constraint firstAttribute="trailing" secondItem="NKB-3g-eGB" secondAttribute="trailing" id="ne9-g2-lF1"/>
+                            <constraint firstAttribute="centerX" secondItem="IP9-5B-XTH" secondAttribute="centerX" id="yQ3-Hc-Rvj"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="keM-O8-hHw"/>
+                    <connections>
+                        <outlet property="scrollView" destination="NKB-3g-eGB" id="0lL-Ut-hoi"/>
+                        <outlet property="spinner" destination="IP9-5B-XTH" id="cmc-Wv-IFL"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XsH-UA-m4x" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1227" y="93"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Pg3-SX-eCt">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Ial-e0-gdA" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="4v0-fZ-EHV">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="mJJ-H6-WGG" kind="relationship" relationship="rootViewController" id="ctw-aa-1JU"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SbM-GE-bW3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="168" y="93"/>
+        </scene>
+    </scenes>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination" type="retina4"/>
+    </simulatedMetricsContainer>
+</document>
